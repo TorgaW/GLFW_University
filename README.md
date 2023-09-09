@@ -2,7 +2,7 @@
 
 ### C++ >=17
 ### OpenGL 4.6
-### glad.h core profile
+### glad.h local core profile
 ### CMake >=3.21
 ### glm 0.9.9.8
 
