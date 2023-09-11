@@ -1,4 +1,4 @@
-# GLFW_University_Petrusevich
+# GLFW_PetrusPocketEdition_PetroDvizh
 
 ### C++ >=17
 ### OpenGL >=3.3
