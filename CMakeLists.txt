@@ -8,7 +8,13 @@ find_package(glfw3 3.3 REQUIRED)
 
 set(ENGINE 
 Object/Object.cpp
-Shaders/Shaders.cpp)
+ObjectSystem/ObjectSystem.cpp
+Shaders/Shaders.cpp
+Utils/TimeUtils.cpp
+Transformations/Transformations.cpp)
 
-add_executable(GLFW_Hello main.cpp glad.c ${ENGINE})
+set(BASIC_GEOMETRY
+BasicFigures/Cube.cpp)
+
+add_executable(GLFW_Hello main.cpp glad.c ${ENGINE} ${BASIC_GEOMETRY})
 target_link_libraries(GLFW_Hello glfw OpenGL::GL)

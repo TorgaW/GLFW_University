@@ -7,9 +7,11 @@
 #include <string>
 #include <cstring>
 
+#include "../Shaders/Shaders.hpp"
+
 class Object
 {
-private:
+protected:
     unsigned int object_VBO; //vertex buffer
     unsigned int object_VAO; //vertex attributes
     unsigned int object_EBO; //optional elements buffer
@@ -23,9 +25,13 @@ private:
     glm::vec3 object_absolute_position {0.0f};
     glm::vec3 object_relative_position {0.0f};
     glm::vec3 object_scale {1.0f};
+    glm::vec3 object_rotation_angels {0.0f};
+
+    Shader *object_shader_ptr {nullptr};
 
 public:
     Object(float *vertices, size_t vert_num, std::string name, size_t id);
+    Object(std::string name, size_t id){};
     virtual ~Object(){};
 
 public:
@@ -36,11 +42,7 @@ public:
     virtual void Update(float delta_time){};
 
     //called every frame
-    virtual void Draw(float delta_time)
-    {
-        glBindVertexArray(object_VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
-    };
+    virtual void Draw(float delta_time){};
 
     //called before destruction
     virtual void End(){};
@@ -51,6 +53,8 @@ public:
     {
         return object_name;
     };
+
+    inline void SetShader(Shader *ptr) { object_shader_ptr = ptr; };
 
 };
 

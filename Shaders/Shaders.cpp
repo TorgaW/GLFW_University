@@ -2,6 +2,9 @@
 
 void Shader::CreateShader(char *vertex_shader_source, char *fragment_shader_source)
 {
+    unsigned int vshader_id;
+    unsigned int fshader_id;
+    
     //create shader id
     vshader_id = glCreateShader(GL_VERTEX_SHADER);
     //attach source

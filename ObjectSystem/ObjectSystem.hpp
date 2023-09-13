@@ -20,6 +20,14 @@ public:
     };
 
     template<class T>
+    static T *CreateObject(std::string name)
+    {
+        T *t_obj = new T(name, (object_last_id++));
+        object_pool.push_back(t_obj);
+        return t_obj;
+    };
+
+    template<class T>
     static T *FindObject(std::string obj_name)
     {
         auto t = std::find_if(object_pool.begin(), object_pool.end(), [&](Object *optr)
@@ -30,6 +38,9 @@ public:
             return t;
         return nullptr;
     }
+
+    static void UpdateAll(float delta);
+    static void DrawAll(float delta);
 
 public:
     ObjectSystem(){};
