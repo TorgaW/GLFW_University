@@ -11,7 +11,8 @@ Object/Object.cpp
 ObjectSystem/ObjectSystem.cpp
 Shaders/Shaders.cpp
 Utils/TimeUtils.cpp
-Transformations/Transformations.cpp)
+Transformations/Transformations.cpp
+Camera/Camera.cpp)
 
 set(BASIC_GEOMETRY
 BasicFigures/Cube.cpp)
