@@ -5,7 +5,6 @@
 
 class WindowUtils
 {
-private:
 public:
     static inline GLFWwindow *main_window {nullptr};
     WindowUtils(){};

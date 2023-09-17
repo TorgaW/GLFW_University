@@ -4,26 +4,8 @@
 #include "../glad.h"
 #include "../glm/glm.hpp"
 #include <iostream>
-
-//basic shaders
-inline const char *fragmentShaderSource {
-    "#version 410 core\n"
-    "out vec4 fragColor;\n"
-    "void main()\n"
-    "{\n"
-    "   fragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-    "}\n\0"};
-inline const char *vertexShaderSource {
-    "#version 410 core\n"
-    "layout (location = 0) in vec3 position;\n"
-    "uniform mat4 transform;\n"
-    "uniform mat4 model;\n"
-    "uniform mat4 view;\n"
-    "uniform mat4 projection;\n"
-    "void main()\n"
-    "{\n"
-    "   gl_Position = projection * view * model * vec4(position, 1.0f);\n"
-    "}\0"};
+#include <sstream>
+#include <fstream>
 
 class Shader
 {
@@ -31,6 +13,10 @@ private:
     unsigned int shader_program_id;
 private:
     void CreateShader(char *vertex_shader_source, char *fragment_shader_source);
+    inline void CreateShader(const char *vertex_shader_source, const char *fragment_shader_source)
+    {
+        CreateShader((char*)vertex_shader_source, (char*)fragment_shader_source);
+    };
 public:
 
     void setBool(const std::string &name, bool value) const
@@ -92,7 +78,8 @@ public:
 
 public:
     Shader();
-    Shader(char *vertex_shader_source, char *fragment_shader_source);
+    Shader(std::string vertex_path, std::string fragment_path);
+    // Shader(char *vertex_shader_source, char *fragment_shader_source);
     void Use();
     inline unsigned int GetShaderID() { return shader_program_id; };
     ~Shader(){};

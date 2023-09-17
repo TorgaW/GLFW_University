@@ -19,3 +19,9 @@ BasicFigures/Cube.cpp)
 
 add_executable(GLFW_Hello main.cpp glad.c ${ENGINE} ${BASIC_GEOMETRY})
 target_link_libraries(GLFW_Hello glfw OpenGL::GL)
+
+add_custom_command(
+        TARGET GLFW_Hello PRE_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+                ${CMAKE_SOURCE_DIR}/Resources
+                ${CMAKE_CURRENT_BINARY_DIR}/Resources)

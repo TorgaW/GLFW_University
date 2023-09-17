@@ -28,6 +28,14 @@ public:
     };
 
     template<class T>
+    static T *CreateObject(std::string path_to_file, std::string name)
+    {
+        T *t_obj = new T(path_to_file, name, (object_last_id++));
+        object_pool.push_back(t_obj);
+        return t_obj;
+    };
+
+    template<class T>
     static T *FindObject(std::string obj_name)
     {
         auto t = std::find_if(object_pool.begin(), object_pool.end(), [&](Object *optr)

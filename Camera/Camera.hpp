@@ -5,18 +5,21 @@
 #include "../glm/glm.hpp"
 #include "../Utils/ScreenUtils.hpp"
 #include "../Utils/WindowUtils.hpp"
+#include "../Utils/MouseInputUtils.hpp"
 
 class Camera
 {
-private:
+private: 
     glm::mat4 view;
     glm::mat4 projection;
-    glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-    glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+    glm::vec3 camera_front = glm::vec3(0.0f, 0.0f, -1.0f);
+    glm::vec3 camera_up = glm::vec3(0.0f, 1.0f, 0.0f);
 public:
     float camera_near_plane {0.1f};
     float camera_far_plane {100.0f};
+    float camera_fov {70.0f};
     glm::vec3 camera_position {0.0f};
+    glm::vec3 camera_rotation {0.0f};
 
 public:
     void UpdateView();

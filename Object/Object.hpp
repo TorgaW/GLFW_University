@@ -3,6 +3,7 @@
 
 #include "../glm/glm.hpp"
 #include "../glad.h"
+#include <vector>
 #include <cstddef>
 #include <string>
 #include <cstring>
@@ -17,6 +18,10 @@ protected:
     unsigned int object_EBO; //optional elements buffer
 
     float *object_vertices; //object vertices
+    std::vector<float> object_vert_vector;
+    size_t object_vert_num {0};
+    size_t object_indicies_num {0};
+    size_t object_triangles {0};
     unsigned int *object_indices; //optional indices for elements buffer
 
     std::string object_name;
@@ -30,7 +35,11 @@ protected:
     Shader *object_shader_ptr {nullptr};
 
 public:
+    //load object from file path
+    Object(std::string file_path, std::string name, size_t id);
+    //load object manually
     Object(float *vertices, size_t vert_num, std::string name, size_t id);
+    //constructor for pre-defined objects
     Object(std::string name, size_t id){};
     virtual ~Object(){};
 

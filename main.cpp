@@ -10,6 +10,8 @@
 #include "Utils/ScreenUtils.hpp"
 #include "Utils/WindowUtils.hpp"
 #include "Camera/Camera.hpp"
+#include "Utils/MouseInputUtils.hpp"
+#include "CustomOBJModel/CustomOBJModelObject.hpp"
 
 int main(void)
 {
@@ -35,6 +37,8 @@ int main(void)
     /* load glad */
     gladLoadGL();
 
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+
     WindowUtils::main_window = window;
 
     //depth (enable for 3D)
@@ -42,14 +46,18 @@ int main(void)
 
     Shader sh;
     Camera camera_man;
-    auto t = ObjectSystem::CreateObject<Cube>("COOOOBE");
+    auto t = ObjectSystem::CreateObject<CustomOBJModelObject>("Resources/rocket_01.obj", "ROCKET!!!");
     t->SetShader(&sh);
 
     float deltaTime = 0.0;
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
+        if (glfwGetKey(WindowUtils::main_window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+            break;
+
         deltaTime = TimeUtils::UpdateDeltaTime();
+        MouseInputUtils::UpdateMouseInput();
 
         // clear screen
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
