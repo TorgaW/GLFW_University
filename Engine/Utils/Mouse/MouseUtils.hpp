@@ -1,10 +1,10 @@
-#ifndef D084D15A_BE7A_497D_98E1_2683FD66732C
-#define D084D15A_BE7A_497D_98E1_2683FD66732C
+#ifndef B7C6DD4C_5620_48CA_9D26_9BF885BD836B
+#define B7C6DD4C_5620_48CA_9D26_9BF885BD836B
 
-#include <GLFW/glfw3.h>
-#include "WindowUtils.hpp"
+#include "../OpenGLInclude.hpp"
+#include "../EngineUtil.hpp"
 
-class MouseInputUtils
+class MouseInputUtil
 {
 public:
     static inline double mouse_x_pos{0.0f};
@@ -14,12 +14,12 @@ public:
     static inline float mouse_sensitivity {0.25f};
 
 public:
-    MouseInputUtils(){};
-    ~MouseInputUtils(){};
+    MouseInputUtil(){};
+    ~MouseInputUtil(){};
 
     static inline void UpdateMouseInput()
     {
-        glfwGetCursorPos(WindowUtils::main_window, &mouse_x_pos, &mouse_y_pos);
+        glfwGetCursorPos(EngineUtil::glfw_window, &mouse_x_pos, &mouse_y_pos);
         if (first_mouse)
         {
             last_x = mouse_x_pos;
@@ -48,4 +48,4 @@ private:
     static inline bool first_mouse{true};
 };
 
-#endif /* D084D15A_BE7A_497D_98E1_2683FD66732C */
+#endif /* B7C6DD4C_5620_48CA_9D26_9BF885BD836B */
