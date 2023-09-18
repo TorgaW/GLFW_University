@@ -32,7 +32,7 @@ uint32_t Shader::LoadShaderFromFile(const std::string &path_to_file, uint32_t gl
     return s_id;
 }
 
-Shader::Shader(const std::string &fragment_shader_path, size_t id, const std::string &vertex_shader_path)
+Shader::Shader(const std::string &fragment_shader_path, size_t id, ShaderType type, const std::string &vertex_shader_path)
 {
     uint32_t vs_id, fs_id;
     // load shader files
@@ -64,6 +64,7 @@ Shader::Shader(const std::string &fragment_shader_path, size_t id, const std::st
 
     //misc
     shader_id = id;
+    shader_type = type;
 }
 
 GLint Shader::GetUniformLocation(const std::string &name) const

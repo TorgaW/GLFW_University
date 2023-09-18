@@ -14,9 +14,6 @@
 class Engine
 {
 public:
-
-public:
-    //Init functions
     static bool Init();
     static bool Init(uint16_t screen_size_x, uint16_t screen_size_y);
 

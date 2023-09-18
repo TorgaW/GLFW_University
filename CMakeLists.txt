@@ -16,7 +16,8 @@ Engine/Shader/Shader.cpp)
 set(MANAGERS
 Engine/Managers/MeshManager/MeshManager.cpp
 Engine/Managers/CameraManager/CameraManager.cpp
-Engine/Managers/ShaderManager/ShaderManager.cpp)
+Engine/Managers/ShaderManager/ShaderManager.cpp
+Engine/Managers/LightManager/LightManager.cpp)
 
 set(UTILS
 Engine/Utils/OBJLoader/OBJLoader.cpp)

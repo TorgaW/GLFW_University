@@ -4,6 +4,7 @@
 #include "../Managers/CameraManager/CameraManager.hpp"
 #include "../Managers/MeshManager/MeshManager.hpp"
 #include "../Managers/ShaderManager/ShaderManager.hpp"
+#include "../Managers/LightManager/LightManager.hpp"
 
 class Render
 {

@@ -9,6 +9,13 @@
 #include <fstream>
 #include <unordered_map>
 
+enum ShaderType
+{
+    Unlit = 0,
+    Phong = 1,
+    PBR = 2
+};
+
 class Shader
 {
 private:
@@ -16,6 +23,7 @@ private:
     mutable std::unordered_map<std::string, u_int32_t> shader_uniforms_cache;
 public:
     size_t shader_id {0};
+    ShaderType shader_type;
 private:
     /**
      * @brief Load and compile shader from file
@@ -33,7 +41,7 @@ public:
      * @param fragment_shader_path path to fragment shader
      * @param vertex_shader_path path to vertex shader (if not provided will be used default vertex shader)
      */
-    Shader(const std::string &fragment_shader_path, size_t id, const std::string &vertex_shader_path = "Resources/Shaders/DefaultVertex.vert");
+    Shader(const std::string &fragment_shader_path, size_t id, ShaderType type, const std::string &vertex_shader_path = "Resources/Shaders/DefaultVertex.vert");
     ~Shader(){};
 
 public:
