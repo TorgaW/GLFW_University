@@ -19,7 +19,7 @@ private:
 public:
     glm::vec3 mesh_position {0.0f};
     glm::vec3 mesh_rotation {0.0f};
-    glm::vec3 mesh_scale {0.0f};
+    glm::vec3 mesh_scale {1.0f};
 public:
     bool b_enable_tick_update {false};
 

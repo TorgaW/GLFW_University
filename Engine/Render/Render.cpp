@@ -42,6 +42,9 @@ void Render::DrawScreen(float delta_time)
             model = glm::rotate(model, t_mesh->mesh_rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
             model = glm::rotate(model, t_mesh->mesh_rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
             model = glm::translate(model, t_mesh->mesh_position);
+            model = glm::scale(model, t_mesh->mesh_scale);
+            // model = glm::scale(model, glm::vec3(0.0f, t_mesh->mesh_scale.y, 0.0f));
+            // model = glm::scale(model, glm::vec3(0.0f, 0.0f, t_mesh->mesh_scale.z));
 
             t_mesh_shader->setMat4("model", model);
 
