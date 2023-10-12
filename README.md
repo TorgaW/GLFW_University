@@ -1,4 +1,4 @@
-# GLFW_PetrusPocketEdition_PetroDvizh
+# GLFW_PocketEdition
 
 ### C++ >=17
 ### OpenGL >=3.3
