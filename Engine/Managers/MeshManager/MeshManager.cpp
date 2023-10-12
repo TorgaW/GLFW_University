@@ -19,3 +19,10 @@ Mesh *MeshManager::CreateMesh(const std::string &path_to_obj_file, const std::st
     // finish
     return t;
 }
+
+Mesh *MeshManager::CreateMesh(const std::vector<float> &vbo_data, size_t indices_n, const std::string &mesh_name)
+{
+    Mesh *t = new Mesh(mesh_name, last_mesh_id++, vbo_data, indices_n);
+    meshes_pool.push_back(t);
+    return t;
+}

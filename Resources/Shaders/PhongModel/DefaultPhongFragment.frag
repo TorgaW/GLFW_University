@@ -20,7 +20,6 @@ out vec4 fragColor;
 
 void main()
 {
-    // fragColor = vec4(vec2(f_uv.x, f_uv.y), 0.0, 1.0);
     float ambient = 0.1;
     vec3 ambient_strength = vec3(1.0);
     vec3 normal = normalize(f_normal);

@@ -22,6 +22,16 @@ public:
     static Mesh *CreateMesh(const std::string& path_to_obj_file, const std::string& mesh_name);
 
     /**
+     * @brief Create a Mesh object from VBO array
+     * 
+     * @param vbo_data 
+     * @param indices_n 
+     * @param mesh_name
+     * @return Mesh* if success nullptr otherwise
+     */
+    static Mesh *CreateMesh(const std::vector<float>& vbo_data, size_t indices_n, const std::string& mesh_name);
+
+    /**
      * @brief Get the Mesh Pool vector
      * 
      * @return std::vector<Mesh*>* 

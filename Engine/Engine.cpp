@@ -56,8 +56,11 @@ void Engine::StartLoop()
         // update camera input
         CameraManager::active_camera->UpdateInput(TimeUtil::GetDeltaTime());
 
+        // MeshManager::GetMeshPool()->at(0)->mesh_rotation = {90.0f * std::sin(glfwGetTime()), 0.0f, 0.0f};
+        // std::cout << MeshManager::GetMeshPool()->at(0)->mesh_rotation.x << "\n";
+
         // clear screen
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // rendering
