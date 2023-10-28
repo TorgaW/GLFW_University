@@ -49,12 +49,16 @@ void Engine::StartLoop()
 
         // update delta time
         TimeUtil::UpdateTime();
+        std::cout << TimeUtil::GetDeltaTime() << "\n";
 
         //update mouse input
         MouseInputUtil::UpdateMouseInput();
 
         // update camera input
         CameraManager::active_camera->UpdateInput(TimeUtil::GetDeltaTime());
+
+        //update lights
+        LightManager::UpdateLights(TimeUtil::GetDeltaTime());
 
         // MeshManager::GetMeshPool()->at(0)->mesh_rotation = {90.0f * std::sin(glfwGetTime()), 0.0f, 0.0f};
         // std::cout << MeshManager::GetMeshPool()->at(0)->mesh_rotation.x << "\n";

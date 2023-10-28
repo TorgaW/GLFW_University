@@ -3,7 +3,7 @@
 
 #include "../Utils/Mouse/MouseUtils.hpp"
 
-#define FLY_MODE
+// #define FLY_MODE
 
 class Camera
 {

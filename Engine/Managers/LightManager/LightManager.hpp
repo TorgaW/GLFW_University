@@ -47,11 +47,11 @@ public:
     static P_SkyLight *CreatePhongSkyLight(const glm::vec3 &color, float intensity);
 
 
-    static inline void UpdateLights()
+    static inline void UpdateLights(float delta_t)
     {
         for (auto &&i : phong_light_pool)
         {
-            i->Update();
+            i->Update(delta_t);
         }
     };
 

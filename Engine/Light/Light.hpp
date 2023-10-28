@@ -29,7 +29,7 @@ public:
      * @brief Update light state every tick
      * 
      */
-    virtual void Update(){};
+    virtual void Update(float delta_t){};
 };
 
 

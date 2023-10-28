@@ -7,7 +7,7 @@ int main(void)
 
     CameraManager::CreateCameraAndSetAsActive();
     CameraManager::active_camera->camera_position = {10.0f, 20.0f, 25.0f};
-    CameraManager::active_camera->camera_fov = 45.0f;
+    CameraManager::active_camera->camera_fov = 50.0f;
     auto sun = LightManager::CreatePhongDirectionalLight({1.0f, 1.0f, 1.0f}, EngineColors::white, 1.0f);
     auto d_shader = ShaderManager::CreateDefaultPhongShader();
 

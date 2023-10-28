@@ -5,6 +5,11 @@
 
 class TimeUtil
 {
+private:
+    static inline double prev_frame_time{0.0f};
+    static inline double current_frame_time{0.0f};
+    static inline double delta_time{0.0f};
+    static inline double time_since_start{0.0f};
 public:
     /**
      * @brief Update delta time and time since start (in seconds)
@@ -13,7 +18,7 @@ public:
     static inline void UpdateTime()
     {
         current_frame_time = glfwGetTime();
-        delta_time = current_frame_time = prev_frame_time;
+        delta_time = current_frame_time - prev_frame_time;
         time_since_start = current_frame_time;
         prev_frame_time = current_frame_time;
     };
@@ -22,11 +27,6 @@ public:
     static inline double GetDeltaTime() { return delta_time; };
     static inline double GetTimeSinceStart() { return time_since_start; };
 
-private:
-    static inline double prev_frame_time{0.0f};
-    static inline double current_frame_time{0.0f};
-    static inline double delta_time{0.0f};
-    static inline double time_since_start{0.0f};
 
 public:
     TimeUtil(){};
