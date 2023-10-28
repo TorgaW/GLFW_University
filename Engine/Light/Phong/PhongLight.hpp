@@ -26,7 +26,7 @@ public:
         float t_x = 11.26f * std::cos(t_param) + 2.41f * std::sin(t_param);
         float t_y = 9.97 * std::cos(t_param) - 3.48f * std::sin(t_param);
         float t_z = -1.29f * std::cos(t_param) - 5.88f * std::sin(t_param);
-        light_direction = glm::vec3(t_x, t_y, t_z) + p;
+        light_direction = -(glm::vec3(t_x, t_y, t_z) + p);
         std::cout << light_direction.x << " " << light_direction.y << " " << light_direction.z << "\n";
         // light_direction = glm::lookAt(light_position, {0.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f});
         
