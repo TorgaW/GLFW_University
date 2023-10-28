@@ -73,6 +73,9 @@ bool OBJLoader::FromFile(const std::string &path_to_file, std::vector<float> *ou
     // reserve memeory for vbo data
     out_vbo_data->reserve(vi.size() * 8);
 
+    std::ofstream debf;
+    debf.open("obj_loader_log.txt");
+
     // combine data with values and indices
     for (size_t i = 0; i < vi.size(); i++)
     {
@@ -93,7 +96,14 @@ bool OBJLoader::FromFile(const std::string &path_to_file, std::vector<float> *ou
         // push back uv
         out_vbo_data->push_back(v_uvs.x);
         out_vbo_data->push_back(v_uvs.y);
+
+        debf << v_pos.x << "f, " << v_pos.y << "f, " << v_pos.z << "f, " 
+             << v_nor.x << "f, " << v_nor.y << "f, " << v_nor.z << "f, "
+             << v_uvs.x << "f, "<< v_uvs.y << "f, \n";
     }
+
+    debf.close();
+
     // set number of indices
     *out_indices = vi.size();
     // finish

@@ -12,7 +12,7 @@ private:
     static inline size_t last_light_id{0};
 
 public:
-    static inline std::vector<PhongLight *> *GetPhongLightPool() { return &phong_light_pool; };
+    static inline std::vector<PhongLight *> GetPhongLightPool() { return phong_light_pool; };
 
 public:
     /**
