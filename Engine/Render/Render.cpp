@@ -25,14 +25,14 @@ void Render::DrawScreen(float delta_time)
             // light section
             if (t_mesh_shader->shader_type != ShaderType::Unlit)
             {   
-                t_mesh_shader->setInt("lights_number", light_pool->size());
-                for (int i = 0; i < light_pool->size(); i++)
+                t_mesh_shader->setInt("lights_number", light_pool.size());
+                for (int i = 0; i < light_pool.size(); i++)
                 {
-                    t_mesh_shader->setInt("lights["+std::to_string(i)+"].type", light_pool->at(i)->light_type);
-                    t_mesh_shader->setVec3("lights["+std::to_string(i)+"].position", light_pool->at(i)->light_position);
-                    t_mesh_shader->setVec3("lights["+std::to_string(i)+"].direction", light_pool->at(i)->light_direction);
-                    t_mesh_shader->setVec3("lights["+std::to_string(i)+"].color", light_pool->at(i)->light_color);
-                    t_mesh_shader->setFloat("lights["+std::to_string(i)+"].intensity", light_pool->at(i)->light_intensity);
+                    t_mesh_shader->setInt("lights["+std::to_string(i)+"].type", light_pool[i]->light_type);
+                    t_mesh_shader->setVec3("lights["+std::to_string(i)+"].position", light_pool[i]->light_position);
+                    t_mesh_shader->setVec3("lights["+std::to_string(i)+"].direction", light_pool[i]->light_direction);
+                    t_mesh_shader->setVec3("lights["+std::to_string(i)+"].color", light_pool[i]->light_color);
+                    t_mesh_shader->setFloat("lights["+std::to_string(i)+"].intensity", light_pool[i]->light_intensity);
                 }
             }
 

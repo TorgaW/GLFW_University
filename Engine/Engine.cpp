@@ -63,10 +63,6 @@ void Engine::StartLoop()
         glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        //calculate light direction
-        glm::vec3 p0{3.32f, -1.9f, 4.78f};
-        LightManager::GetPhongLightPool()[0]->light_position;
-
         // rendering
         Render::DrawScreen(TimeUtil::GetDeltaTime());
 

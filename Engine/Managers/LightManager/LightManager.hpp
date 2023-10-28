@@ -22,9 +22,9 @@ public:
      * @param color light color
      * @param intensity light intensity
      *
-     * @return DirectionalLight*
+     * @return P_DirectionalLight*
      */
-    static DirectionalLight *CreatePhongDirectionalLight(const glm::vec3 &dir, const glm::vec3 &color, float intensity);
+    static P_DirectionalLight *CreatePhongDirectionalLight(const glm::vec3 &dir, const glm::vec3 &color, float intensity);
 
     /**
      * @brief Create a Phong Point Light object
@@ -33,18 +33,27 @@ public:
      * @param color light color
      * @param intensity light intensity
      *
-     * @return PointLight*
+     * @return P_PointLight*
      */
-    static PointLight *CreatePhongPointLight(const glm::vec3 &pos, const glm::vec3 &color, float intensity);
+    static P_PointLight *CreatePhongPointLight(const glm::vec3 &pos, const glm::vec3 &color, float intensity);
 
     /**
      * @brief Create a Phong Sky Light object
      *
      * @param color light color
      * @param intensity light intensity
-     * @return SkyLight*
+     * @return P_SkyLight*
      */
-    static SkyLight *CreatePhongSkyLight(const glm::vec3 &color, float intensity);
+    static P_SkyLight *CreatePhongSkyLight(const glm::vec3 &color, float intensity);
+
+
+    static inline void UpdateLights()
+    {
+        for (auto &&i : phong_light_pool)
+        {
+            i->Update();
+        }
+    };
 
 public:
     LightManager(){};
