@@ -1,5 +1,7 @@
 # GLFW_PocketEdition
 
+## Done for variant 3
+
 ### C++ >=17
 ### OpenGL >=3.3
 ### glad.h local core profile for OpenGL 3.x or 4.x version
