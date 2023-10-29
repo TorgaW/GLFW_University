@@ -49,7 +49,7 @@ void Engine::StartLoop()
 
         // update delta time
         TimeUtil::UpdateTime();
-        std::cout << TimeUtil::GetDeltaTime() << "\n";
+        // std::cout << TimeUtil::GetDeltaTime() << "\n";
 
         //update mouse input
         MouseInputUtil::UpdateMouseInput();

@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include "../Shader/Shader.hpp"
+#include "../Texture/Texture.hpp"
 
 class Mesh
 {
@@ -22,6 +23,8 @@ public:
     glm::vec3 mesh_scale {1.0f};
 public:
     bool b_enable_tick_update {false};
+
+    Texture *mesh_texture {nullptr};
 
 public:
     //Attach shader to the mesh shader pipeline

@@ -18,6 +18,7 @@ void Render::DrawScreen(float delta_time)
             t_mesh_shader = t_mesh->GetMeshShader();
             // use mesh shader
             t_mesh_shader->UseShader();
+            t_mesh_shader->setInt("tex_0", 2);
             // set default uniforms
             t_mesh_shader->setMat4("projection", cam_proj);
             t_mesh_shader->setMat4("view", cam_view);
@@ -47,6 +48,9 @@ void Render::DrawScreen(float delta_time)
             // model = glm::scale(model, glm::vec3(0.0f, 0.0f, t_mesh->mesh_scale.z));
 
             t_mesh_shader->setMat4("model", model);
+
+            glActiveTexture(GL_TEXTURE2);
+            glBindTexture(GL_TEXTURE_2D, t_mesh->mesh_texture->gl_bitmap_index);
 
             glBindVertexArray(t_mesh->GetVAO());
             glDrawArrays(GL_TRIANGLES, 0, t_mesh->GetIndices());

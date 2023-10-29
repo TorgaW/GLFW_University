@@ -16,7 +16,10 @@ in vec2 f_uv;
 uniform LightSource lights[MAX_LIGHTS];
 uniform int lights_number;
 
+uniform sampler2D tex_0;
+
 out vec4 fragColor;
+
 
 void main()
 {
@@ -30,5 +33,5 @@ void main()
         diff = max(dot(normal, normalize(lights[i].direction)), 0.0);
         diffuse *= (diff * lights[i].color);
     }
-    fragColor = vec4((ambient + diffuse), 1.0) * vec4(f_uv.xy, 0.0, 1.0);
+    fragColor = vec4((ambient + diffuse), 1.0) * vec4(texture2D(tex_0, f_uv.xy).rgb, 1.0);
 }

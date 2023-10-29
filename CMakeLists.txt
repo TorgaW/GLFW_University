@@ -11,7 +11,8 @@ Engine/Engine.cpp
 Engine/Mesh/Mesh.cpp
 Engine/Camera/Camera.cpp
 Engine/Render/Render.cpp
-Engine/Shader/Shader.cpp)
+Engine/Shader/Shader.cpp
+Engine/Texture/Texture.cpp)
 
 set(MANAGERS
 Engine/Managers/MeshManager/MeshManager.cpp
@@ -24,7 +25,7 @@ Engine/Utils/OBJLoader/OBJLoader.cpp)
 
 set(ENGINE ${CORE} ${MANAGERS} ${UTILS})
 
-add_executable(OpenGL_3DView main.cpp glad.c ${ENGINE})
+add_executable(OpenGL_3DView main.cpp glad.c ${ENGINE} stb_image.cpp)
 target_link_libraries(OpenGL_3DView glfw OpenGL::GL)
 
 # command to update resources every build

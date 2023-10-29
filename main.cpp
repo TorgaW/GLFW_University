@@ -42,6 +42,7 @@ int main(void)
     mesh->mesh_position = {0.0f, 0.0f, 0.0f};
     mesh->mesh_rotation = {0.0f, 0.0f, 0.0f};
     mesh->mesh_scale = {5.f, 5.f, 5.f};
+    mesh->mesh_texture = new Texture("Resources/Textures/brick.jpg");
     Engine::StartLoop();
     return 0;
 }
