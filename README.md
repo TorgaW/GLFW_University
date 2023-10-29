@@ -1,6 +1,6 @@
 # GLFW_PocketEdition
 
-## Done for variant 3
+## Practice 3
 
 ### C++ >=17
 ### OpenGL >=3.3
