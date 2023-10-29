@@ -43,6 +43,15 @@ int main(void)
     mesh->mesh_rotation = {0.0f, 0.0f, 0.0f};
     mesh->mesh_scale = {5.f, 5.f, 5.f};
     mesh->mesh_texture = new Texture("Resources/Textures/brick.jpg");
+
+    auto mesh2 = MeshManager::CreateMesh(vbo_data, vbo_data.size()/8, "Mesh #2");
+    mesh2->AttachShader(d_shader);
+    mesh2->mesh_position = {10.0f, 5.0f, 10.0f};
+    mesh2->mesh_rotation = {0.0f, 0.0f, 0.0f};
+    mesh2->mesh_scale = {5.f, 5.f, 5.f};
+    mesh2->mesh_texture = new Texture("Resources/Textures/brick.jpg");
+
+
     Engine::StartLoop();
     return 0;
 }
