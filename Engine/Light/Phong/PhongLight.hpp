@@ -19,6 +19,7 @@ public:
     virtual void Update(float delta_t)
     {
         // (-2.59, 8.28, 0.87) + (11.26 cos(t) + 2.41 sin(t), 9.97 cos(t) - 3.48 sin(t), -1.29 cos(t) - 5.88 sin(t))
+        // kirill : (2.31, -8.76, 13.55) + (2.18 cos(t) - 3.9 sin(t), -7.91 cos(t) + 1.02 sin(t), -5.73 cos(t) - 2.88 sin(t))
         t_param += delta_t * 1.0f;
         // std::cout << t_param << "\n";
         if(t_param > 2.0f * 3.1416f) t_param = 0.0f; 
