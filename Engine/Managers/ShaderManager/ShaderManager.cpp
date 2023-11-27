@@ -15,6 +15,14 @@ Shader *ShaderManager::CreateDefaultPhongShader()
     return t;
 }
 
+Shader *ShaderManager::CreateDefaultPBRShader()
+{
+    Shader *t = new Shader("Resources/Shaders/PBR/PBR.frag", (last_shader_id++),
+                           ShaderType::PBR, "Resources/Shaders/PBR/PBR.vert");
+    shaders_pool.push_back(t);
+    return t;
+}
+
 Shader *ShaderManager::CreateShaderFromFiles(const std::string &frag_path, ShaderType type, const std::string &vert_path)
 {
     Shader *t = new Shader(frag_path, (last_shader_id++), type, vert_path);

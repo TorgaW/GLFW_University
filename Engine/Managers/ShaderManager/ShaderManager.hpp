@@ -24,6 +24,13 @@ public:
     static Shader *CreateDefaultPhongShader();
 
     /**
+     * @brief Create a Default PBR Shader object
+     * 
+     * @return Shader* or nullptr
+     */
+    static Shader *CreateDefaultPBRShader();
+
+    /**
      * @brief Create a Shader from files
      * 
      * @param frag_path path to fragment shader

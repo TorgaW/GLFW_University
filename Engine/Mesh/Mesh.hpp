@@ -4,8 +4,7 @@
 #include "../Utils/OpenGLInclude.hpp"
 #include <vector>
 #include <string>
-#include "../Shader/Shader.hpp"
-#include "../Texture/Texture.hpp"
+#include "../PBRMaterial/PBRMaterial.hpp"
 
 class Mesh
 {
@@ -17,6 +16,7 @@ private:
     uint32_t mesh_VAO; //vertex attributes
     size_t mesh_indices {0};
     Shader *mesh_shader {nullptr}; //shader for the mesh
+
 public:
     glm::vec3 mesh_position {0.0f};
     glm::vec3 mesh_rotation {0.0f};
@@ -25,7 +25,7 @@ public:
     bool b_enable_tick_update {false};
 
     Texture *mesh_texture {nullptr};
-
+    PBRMaterial *material {nullptr}; //for PBR rendering
 public:
     //Attach shader to the mesh shader pipeline
     inline void AttachShader(Shader* shader_program)

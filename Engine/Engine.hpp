@@ -8,8 +8,8 @@
 #include "Managers/MeshManager/MeshManager.hpp"
 #include "Render/Render.hpp"
 
-#define ENGINE_DEFAULT_SCREEN_SIZE_X 1200
-#define ENGINE_DEFAULT_SCREEN_SIZE_Y 720
+#define ENGINE_DEFAULT_SCREEN_SIZE_X 1920
+#define ENGINE_DEFAULT_SCREEN_SIZE_Y 1080
 
 class Engine
 {

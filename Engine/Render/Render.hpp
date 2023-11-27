@@ -6,6 +6,9 @@
 #include "../Managers/ShaderManager/ShaderManager.hpp"
 #include "../Managers/LightManager/LightManager.hpp"
 
+// #define PHONG
+#define PBR
+
 class Render
 {
 public:
