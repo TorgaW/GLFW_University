@@ -52,18 +52,22 @@ uniform int spotLightsNum;
 
 uniform vec3 camPos;
 
+uniform float uv_mult;
+
 const float PI = 3.14159265359;
 
 // -------------------------------
 // tangent-normals to world-space.
 vec3 getNormalFromMap()
 {
-    vec3 tangentNormal = texture2D(t_normal_map, f_tex_uv * 5.0).xyz * 2.0 - 1.0;
+    vec3 invertedNormal = texture2D(t_normal_map, f_tex_uv * uv_mult).xyz;
+    invertedNormal.y = 1.0-invertedNormal.y;
+    vec3 tangentNormal = invertedNormal * 2.0 - 1.0;
 
     vec3 Q1  = dFdx(f_world_pos);
     vec3 Q2  = dFdy(f_world_pos);
-    vec2 st1 = dFdx(f_tex_uv * 5.0);
-    vec2 st2 = dFdy(f_tex_uv * 5.0);
+    vec2 st1 = dFdx(f_tex_uv * uv_mult);
+    vec2 st2 = dFdy(f_tex_uv * uv_mult);
 
     vec3 N   = normalize(f_normal);
     vec3 T  = normalize(Q1*st2.t - Q2*st1.t);
@@ -115,10 +119,10 @@ vec3 fresnelSchlick(float cosTheta, vec3 F0)
 // ----------------------------------------------------------------------------
 void main()
 {	
-    vec3 albedo     = pow(texture2D(t_albedo, f_tex_uv * 5.0).rgb, vec3(2.2)) * p_albedo_intensity;
-    float metallic  = texture2D(t_metallic_map, f_tex_uv * 5.0).r * p_metallic_intensity;
-    float roughness = texture2D(t_roughness_map, f_tex_uv * 5.0).r * p_roughness_intensity;
-    float ao        = texture2D(t_ao_map, f_tex_uv * 5.0).r * p_ao_intensity;
+    vec3 albedo     = pow(texture2D(t_albedo, f_tex_uv * uv_mult).rgb, vec3(2.2)) * p_albedo_intensity;
+    float metallic  = texture2D(t_metallic_map, f_tex_uv * uv_mult).r * p_metallic_intensity;
+    float roughness = texture2D(t_roughness_map, f_tex_uv * uv_mult).r * p_roughness_intensity;
+    float ao        = texture2D(t_ao_map, f_tex_uv * uv_mult).r * p_ao_intensity;
 
     vec3 N = getNormalFromMap();
     vec3 V = normalize(camPos - f_world_pos);
@@ -174,8 +178,8 @@ void main()
         vec3 L = normalize(pntLights[i].position - f_world_pos);
         vec3 H = normalize(V + L);
         float distance = length(pntLights[i].position - f_world_pos);
-        float attenuation = 1.0 / (distance * distance * pntLights[i].attenuation_mul);
-        vec3 radiance = pntLights[i].color * pntLights[i].attenuation_mul;
+        float attenuation = 1.0 / (distance * distance / pntLights[i].attenuation_mul);
+        vec3 radiance = pntLights[i].color * pntLights[i].attenuation_mul * attenuation;
 
         // Cook-Torrance BRDF
         float NDF = DistributionGGX(N, H, roughness);   

@@ -46,6 +46,7 @@ void Render::DrawScreen(float delta_time)
             t_mesh_shader = t_mesh->material->mat_shader;
             // use mesh shader
             t_mesh_shader->UseShader();
+            t_mesh_shader->setFloat("uv_mult", 9.0f);
             t_mesh_shader->setInt("t_albedo", 2);
             t_mesh_shader->setInt("t_normal_map", 3);
             t_mesh_shader->setInt("t_metallic_map", 4);

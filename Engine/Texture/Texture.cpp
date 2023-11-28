@@ -2,7 +2,7 @@
 
 Texture::Texture(const std::string &path_to)
 {
-    data = stbi_load(path_to.c_str(), &width, &height, &channels, 3);
+    data = stbi_load(path_to.c_str(), &width, &height, &channels, 0);
     std::cout << height << "\n";
     if(!data)
     {
