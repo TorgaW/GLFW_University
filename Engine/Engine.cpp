@@ -107,7 +107,8 @@ bool Engine::EngineInit(uint16_t screen_size_x, uint16_t screen_size_y)
     EngineUtil::window_width_f = screen_size_x;
     EngineUtil::window_height_f = screen_size_y;
     glfwMakeContextCurrent(EngineUtil::glfw_window);
-    glfwSetInputMode(EngineUtil::glfw_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+    glfwSetInputMode(EngineUtil::glfw_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);  
+    // glfwSetInputMode(EngineUtil::glfw_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);  
     gladLoadGL();
     glEnable(GL_DEPTH_TEST);
     return true;

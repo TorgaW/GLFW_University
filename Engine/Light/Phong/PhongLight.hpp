@@ -11,8 +11,8 @@ class PhongLight : public Light
 public:
     float t_param{0.0f};
 public:
-    PhongLight(LightType l_type, const glm::vec3& l_pos, const glm::vec3& l_dir, const glm::vec3& l_col, float intensity, size_t id):
-    Light(l_type, l_pos, l_dir, l_col, intensity, id)
+    PhongLight(LightType l_type, const glm::vec3& l_pos, const glm::vec3& l_dir, const glm::vec3& l_col, float intensity, float cut_off_, size_t id):
+    Light(l_type, l_pos, l_dir, l_col, intensity, cut_off_, id)
     {};
     ~PhongLight(){};
 

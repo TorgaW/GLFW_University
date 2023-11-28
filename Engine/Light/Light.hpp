@@ -17,11 +17,13 @@ public:
     glm::vec3 light_direction;
     glm::vec3 light_color;
     float light_intensity;
+    float cut_off;
+    float outer_cut_off {0.0f};
     size_t light_id;
 
 public:
-    Light(LightType l_type, const glm::vec3& l_pos, const glm::vec3& l_dir, const glm::vec3& l_col, float intensity, size_t id):
-    light_type(l_type), light_position(l_pos), light_direction(l_dir), light_color(l_col), light_intensity(intensity), light_id(id)
+    Light(LightType l_type, const glm::vec3& l_pos, const glm::vec3& l_dir, const glm::vec3& l_col, float intensity, float cut_off_, size_t id):
+    light_type(l_type), light_position(l_pos), light_direction(l_dir), light_color(l_col), light_intensity(intensity), cut_off(cut_off_), light_id(id)
     {};
     virtual ~Light(){};
 

@@ -75,9 +75,38 @@ void Render::DrawScreen(float delta_time)
 
             #ifdef PBR
             t_mesh_shader->setMat3("normal_matrix", glm::transpose(glm::inverse(glm::mat3(model))));
+            
+            t_mesh_shader->setInt("dirLightsNum", LightManager::pbr_dir_light_pool.size());
+            for (size_t i = 0; i < LightManager::pbr_dir_light_pool.size(); i++)
+            {
+                t_mesh_shader->setVec3("dirLights[" + std::to_string(i) + "].position", glm::vec3(1000.0f, 1000.0f, 1000.0f) * (LightManager::pbr_dir_light_pool[i]->light_direction));
+                t_mesh_shader->setVec3("dirLights[" + std::to_string(i) + "].direction", LightManager::pbr_dir_light_pool[i]->light_direction);
+                t_mesh_shader->setVec3("dirLights[" + std::to_string(i) + "].color", LightManager::pbr_dir_light_pool[i]->light_color);
+                t_mesh_shader->setFloat("dirLights[" + std::to_string(i) + "].intensity", LightManager::pbr_dir_light_pool[i]->light_intensity);
+            }
 
-            t_mesh_shader->setVec3("lightPositions[0]", glm::vec3(10.0f, 10.0f, 0.0f)); //TODO LIGHT
-            t_mesh_shader->setVec3("lightColors[0]", glm::vec3(150.0f));
+            t_mesh_shader->setInt("pointLightsNum", LightManager::pbr_pnt_light_pool.size());
+            for (size_t i = 0; i < LightManager::pbr_pnt_light_pool.size(); i++)
+            {
+                t_mesh_shader->setVec3("pntLights[" + std::to_string(i) + "].position", LightManager::pbr_pnt_light_pool[i]->light_position);
+                t_mesh_shader->setVec3("pntLights[" + std::to_string(i) + "].color", LightManager::pbr_pnt_light_pool[i]->light_color);
+                t_mesh_shader->setFloat("pntLights[" + std::to_string(i) + "].attenuation_mul", LightManager::pbr_pnt_light_pool[i]->light_intensity);
+            }
+
+            t_mesh_shader->setInt("spotLightsNum", LightManager::pbr_spt_light_pool.size());
+            for (size_t i = 0; i < LightManager::pbr_spt_light_pool.size(); i++)
+            {
+                t_mesh_shader->setVec3("sptLights[" + std::to_string(i) + "].position", LightManager::pbr_spt_light_pool[i]->light_position);
+                t_mesh_shader->setVec3("sptLights[" + std::to_string(i) + "].direction", LightManager::pbr_spt_light_pool[i]->light_direction);
+                t_mesh_shader->setVec3("sptLights[" + std::to_string(i) + "].color", LightManager::pbr_spt_light_pool[i]->light_color);
+                t_mesh_shader->setFloat("sptLights[" + std::to_string(i) + "].intensity", LightManager::pbr_spt_light_pool[i]->light_intensity);
+                t_mesh_shader->setFloat("sptLights[" + std::to_string(i) + "].cutoff", glm::cos(glm::radians(LightManager::pbr_spt_light_pool[i]->cut_off)));
+                t_mesh_shader->setFloat("sptLights[" + std::to_string(i) + "].outer_cutoff", glm::cos(glm::radians(LightManager::pbr_spt_light_pool[i]->outer_cut_off)));
+            }
+            
+            // t_mesh_shader->setVec3("lightPositions[0]", glm::vec3(10.0f, 10.0f, 0.0f));
+            // t_mesh_shader->setVec3("lightColors[0]", glm::vec3(100.0f, 10.0f, 100.0f));
+            // t_mesh_shader->setFloat("lightAttenuation[0]", 2.0f);
 
             t_mesh_shader->setFloat("p_albedo_intensity", t_mesh->material->t_albedo_intensity);
             t_mesh_shader->setFloat("p_normal_map_intensity", t_mesh->material->t_normal_map_intensity);
