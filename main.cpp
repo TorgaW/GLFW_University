@@ -38,7 +38,7 @@ int main(void)
     };
 
     auto directionalLightSource = LightManager::CreatePBRDirectionalLight({0.0f, 0.1f, 0.1f}, EngineColors::white, 1.0f);
-    auto pointLightSource = LightManager::CreatePBRPointLight({-10.0f, 0.0f, 0.0f}, EngineColors::red, 10.0f);
+    auto pointLightSource = LightManager::CreatePBRPointLight({-15.0f, 0.0f, 0.0f}, EngineColors::red, 10.0f);
     auto spotLightSource = LightManager::CreatePBRSpotLight({10.0f, 5.0f, 0.0f}, {-1.0f, 0.0f, 0.0f}, EngineColors::green, 5.0f, 1.5f, 9.5f);
 
     auto mesh = MeshManager::CreateMesh(vbo_data, vbo_data.size()/8, "Mesh #1");
@@ -52,9 +52,12 @@ int main(void)
     mesh->material->t_albedo_intensity = 1.5f;
     mesh->material->t_metallic_map_intensity = 0.2f;
     mesh->material->t_roughness_map_intensity = 0.4f;
-    mesh->material->SetTextures(new Texture("Resources/Textures/PBR/damba_albedo.png"), new Texture("Resources/Textures/PBR/damba_normal.png"),
-                                new Texture("Resources/Textures/PBR/damba_metallic.png"), new Texture("Resources/Textures/PBR/damba_roughness.png"),
-                                new Texture("Resources/Textures/PBR/damba_ao.png"));
+    mesh->material->SetTextures(new Texture("Resources/Textures/PBR/spaceship_albedo.png"), new Texture("Resources/Textures/PBR/spaceship_normal.png"),
+                                new Texture("Resources/Textures/PBR/spaceship_metallic.png"), new Texture("Resources/Textures/PBR/spaceship_roughness.png"),
+                                new Texture("Resources/Textures/PBR/spaceship_ao.png"));
+    mesh->material->SetTextures2(new Texture("Resources/Textures/PBR/brick_albedo.png"), new Texture("Resources/Textures/PBR/brick_normal.png"),
+                                new Texture("Resources/Textures/PBR/brick_metallic.png"), new Texture("Resources/Textures/PBR/brick_roughness.png"),
+                                new Texture("Resources/Textures/PBR/brick_ao.png"));
 
     // auto mesh2 = MeshManager::CreateMesh(vbo_data, vbo_data.size()/8, "Mesh #2");
     // mesh2->AttachShader(d_shader);

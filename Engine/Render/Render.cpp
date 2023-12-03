@@ -52,6 +52,11 @@ void Render::DrawScreen(float delta_time)
             t_mesh_shader->setInt("t_metallic_map", 4);
             t_mesh_shader->setInt("t_roughness_map", 5);
             t_mesh_shader->setInt("t_ao_map", 6);
+            t_mesh_shader->setInt("t_albedo_2", 7);
+            t_mesh_shader->setInt("t_normal_map_2", 8);
+            t_mesh_shader->setInt("t_metallic_map_2", 9);
+            t_mesh_shader->setInt("t_roughness_map_2", 10);
+            t_mesh_shader->setInt("t_ao_map_2", 11);
             // set default uniforms
             t_mesh_shader->setMat4("projection", cam_proj);
             t_mesh_shader->setMat4("view", cam_view);

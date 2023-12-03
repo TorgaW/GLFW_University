@@ -24,6 +24,11 @@ public:
     Texture *t_metallic_map {nullptr};
     Texture *t_roughness_map {nullptr};
     Texture *t_ao_map {nullptr};
+    Texture *t_albedo_2 {nullptr};
+    Texture *t_normal_map_2 {nullptr};
+    Texture *t_metallic_map_2 {nullptr};
+    Texture *t_roughness_map_2 {nullptr};
+    Texture *t_ao_map_2 {nullptr};
     float t_albedo_intensity {1.0f};
     float t_normal_map_intensity {1.0f};
     float t_metallic_map_intensity {1.0f};
@@ -34,6 +39,7 @@ public:
     void LoadFrom(const std::string& vert, const std::string& frag);
 
     void SetTextures(Texture *t_albedo_, Texture *t_normal_map_, Texture *t_metallic_map_, Texture *t_roughness_map_, Texture *t_ao_map_);
+    void SetTextures2(Texture *t_albedo_, Texture *t_normal_map_, Texture *t_metallic_map_, Texture *t_roughness_map_, Texture *t_ao_map_);
 
     void SetShaderTexturesDuringRender();
 };

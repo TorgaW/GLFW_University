@@ -42,6 +42,17 @@ uniform float p_roughness_intensity;
 uniform sampler2D t_ao_map;
 uniform float p_ao_intensity;
 
+uniform sampler2D t_albedo_2;
+uniform float p_albedo_intensity_2;
+uniform sampler2D t_normal_map_2;
+uniform float p_normal_map_intensity_2;
+uniform sampler2D t_metallic_map_2;
+uniform float p_metallic_intensity_2;
+uniform sampler2D t_roughness_map_2;
+uniform float p_roughness_intensity_2;
+uniform sampler2D t_ao_map_2;
+uniform float p_ao_intensity_2;
+
 // lights
 uniform DirectionalLight dirLights[32];
 uniform PointLight pntLights[32];
@@ -60,7 +71,7 @@ const float PI = 3.14159265359;
 // tangent-normals to world-space.
 vec3 getNormalFromMap()
 {
-    vec3 invertedNormal = texture2D(t_normal_map, f_tex_uv * uv_mult).xyz;
+    vec3 invertedNormal = mix(texture2D(t_normal_map, f_tex_uv * uv_mult), texture2D(t_normal_map_2, f_tex_uv * uv_mult), f_tex_uv.r*2.0).xyz;
     invertedNormal.y = 1.0-invertedNormal.y;
     vec3 tangentNormal = invertedNormal * 2.0 - 1.0;
 
@@ -119,10 +130,10 @@ vec3 fresnelSchlick(float cosTheta, vec3 F0)
 // ----------------------------------------------------------------------------
 void main()
 {	
-    vec3 albedo     = pow(texture2D(t_albedo, f_tex_uv * uv_mult).rgb, vec3(2.2)) * p_albedo_intensity;
-    float metallic  = texture2D(t_metallic_map, f_tex_uv * uv_mult).r * p_metallic_intensity;
-    float roughness = texture2D(t_roughness_map, f_tex_uv * uv_mult).r * p_roughness_intensity;
-    float ao        = texture2D(t_ao_map, f_tex_uv * uv_mult).r * p_ao_intensity;
+    vec3 albedo     = pow(mix(texture2D(t_albedo, f_tex_uv * uv_mult).rgb, texture2D(t_albedo_2, f_tex_uv * uv_mult).rgb, f_tex_uv.r*2.0), vec3(2.2)) * p_albedo_intensity;
+    float metallic  = mix(texture2D(t_metallic_map, f_tex_uv * uv_mult), texture2D(t_metallic_map_2, f_tex_uv * uv_mult), f_tex_uv.r*2.0).r * p_metallic_intensity;
+    float roughness = mix(texture2D(t_roughness_map, f_tex_uv * uv_mult), texture2D(t_roughness_map_2, f_tex_uv * uv_mult), f_tex_uv.r*2.0).r * p_roughness_intensity;
+    float ao        = mix(texture2D(t_ao_map, f_tex_uv * uv_mult), texture2D(t_ao_map_2, f_tex_uv * uv_mult), f_tex_uv.r*2.0).r * p_ao_intensity;
 
     vec3 N = getNormalFromMap();
     vec3 V = normalize(camPos - f_world_pos);
