@@ -20,7 +20,7 @@ class Shader
 {
 private:
     uint32_t shader_program_id;
-    mutable std::unordered_map<std::string, u_int32_t> shader_uniforms_cache;
+    mutable std::unordered_map<std::string, uint32_t> shader_uniforms_cache;
 public:
     size_t shader_id {0};
     ShaderType shader_type;
