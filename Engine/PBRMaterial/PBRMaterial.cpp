@@ -41,8 +41,8 @@ void PBRMaterial::SetShaderTexturesDuringRender()
         glActiveTexture(GL_TEXTURE5);
         glBindTexture(GL_TEXTURE_2D, t_roughness_map->gl_bitmap_index);
         glActiveTexture(GL_TEXTURE6);
-
-        glBindTexture(GL_TEXTURE_2D, t_ao_map_2->gl_bitmap_index);
+        glBindTexture(GL_TEXTURE_2D, t_ao_map->gl_bitmap_index);
+        
         glActiveTexture(GL_TEXTURE7);
         glBindTexture(GL_TEXTURE_2D, t_albedo_2->gl_bitmap_index);
         glActiveTexture(GL_TEXTURE8);
